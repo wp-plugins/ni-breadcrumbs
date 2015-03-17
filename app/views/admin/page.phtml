@@ -119,12 +119,6 @@
 
                 <?php if ( $status = NI_Breadcrumbs_Status::get() )
                     echo self::statusBar( $status ); ?>
-                
-                <table>
-
-                <h3><?php _e( '', 'ni-breadcrumbs' ); ?></h3>
-                 
-                <table>
                     
                     <tr>
                         <td>
@@ -156,6 +150,10 @@
                     </tr>
             
                 </table>
+                                
+                <br />
+                
+                <?php _e( 'Shortcode' ); ?>: <strong>[ni-breadcrumbs]</strong>
                 
                 <br /><br />
 
