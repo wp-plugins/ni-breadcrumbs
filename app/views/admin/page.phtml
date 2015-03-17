@@ -1,171 +1,176 @@
 <style>
 
-            h4
-            {
-                font-weight: bold;
-                margin: 10px 0px;
-            }
-            
-            h4.divider
-            {
-                color: #D44A44;
-                font-size: 12px;
-            }
+    h2
+    {
+        margin-bottom: 15px;
+    }
+    
+    h4
+    {
+        font-weight: bold;
+        margin: 10px 0px;
+    }
 
-            h5
-            {
-                font-size: 11px;
-                margin: 10px 0px;
-            }
+    h4.divider
+    {
+        color: #D44A44;
+        font-size: 12px;
+    }
 
-            .numberInput
-            {
-                width: 50px;
-            }
+    h5
+    {
+        font-size: 11px;
+        margin: 10px 0px;
+    }
 
-            textarea
-            {
-                width: 100%;
-            }
-            
-            table
-            {
-                width: 98%;
-                border-left: 4px solid #7AD03A;
-                padding-left: 2%;
-                box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
-                background: white;
-                padding-bottom: 15px;
-            }
-            
-            table.inner-table
-            {
-                border: 0px;
-                box-shadow: none;
-            }
+    .numberInput
+    {
+        width: 50px;
+    }
 
-            table td
-            {
-                width: 48%;
-                padding-right: 2%;
-                vertical-align: top;
-            }
-            
-            .default
-            {
-                font-size: 8px;
-                font-style: italic;
-            }
+    textarea
+    {
+        width: 100%;
+    }
 
-            .error
-            {
-                color: red;
-            }
-            
-            .success
-            {
-                color: green;
-            }
+    table
+    {
+        width: 98%;
+        border-left: 4px solid #7AD03A;
+        padding-left: 2%;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+        background: white;
+        padding-bottom: 15px;
+    }
 
-            #RMVersion
-            {
-                float: right;
-                border-left: 4px solid #7AD03A;
-                padding: 10px;
-                background: white;
-                box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
-            }
-            
-            #RMVersion.beta
-            {
-                border-color: orange;
-            }
-            
-            .note
-            {
-                padding: 25px 0px 0px 0px;
-                color: green;
-            }
-            
-            .button.file
-            {
-                background: white;
-                padding: 0px !important;
-            }
-            
-            @media only screen and ( min-width : 0px ) and ( max-width : 600px ) { 
+    table.inner-table
+    {
+        border: 0px;
+        box-shadow: none;
+    }
 
-                table, table td, table tr
-                {
-                    width: 100%;
-                    display: block;
-                }
-                
-            }
-            
-        </style>
+    table td
+    {
+        width: 48%;
+        padding-right: 2%;
+        vertical-align: top;
+    }
 
-        <div class="wrap">
+    .default
+    {
+        font-size: 8px;
+        font-style: italic;
+    }
 
-            <div id="RMVersion" <?php echo NI_Breadcrumbs_Registry::get( 'config', 'is_beta' ) ? 'class="beta"' : ''; ?>>
-                <?php _e( 'Version', 'ni-breadcrumbs' ); ?> <?php echo NI_Breadcrumbs_Registry::get( 'config', 'current_version' ); ?> 
-                <?php echo NI_Breadcrumbs_Registry::get( 'config', 'is_beta' ) ? 'Beta' : ''; ?>
-                
-            </div>
-          
-            <form action="" method="post">
+    .error
+    {
+        color: red;
+    }
 
-                <h2><?php _e( 'Breadcrumb Options', 'ni-breadcrumbs' ); ?></h2>
+    .success
+    {
+        color: green;
+    }
 
-                <?php if ( $status = NI_Breadcrumbs_Status::get() )
-                    echo self::statusBar( $status ); ?>
-                    
-                <table>
-                    
-                    <tr>
-                        <td>
-                            
-                            <h4><?php _e( 'Breadcrumb Seperator', 'ni-breadcrumbs' ); ?></h4> 
+    #RMVersion
+    {
+        float: right;
+        border-left: 4px solid #7AD03A;
+        padding: 10px;
+        background: white;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    }
 
-                            <h5><?php _e( 'This is the seperator between breadcrumb links', 'ni-breadcrumbs' ); ?></h5>
+    #RMVersion.beta
+    {
+        border-color: orange;
+    }
 
-                            <input 
-                                type="text" 
-                                name="Seperator" 
-                                value="<?php echo isset( $data['Seperator'] ) ? $data['Seperator'] : ''; ?>" 
-                                />
-                            
-                        </td>
-                        <td>
+    .note
+    {
+        padding: 25px 0px 0px 0px;
+        color: green;
+    }
 
-                            <h4><?php _e( 'Breadcrumb Home Text', 'ni-breadcrumbs' ); ?></h4> 
+    .button.file
+    {
+        background: white;
+        padding: 0px !important;
+    }
 
-                            <h5><?php _e( 'This is the text that displays at the base of the breadcrumbs', 'ni-breadcrumbs' ); ?></h5>
+    @media only screen and ( min-width : 0px ) and ( max-width : 600px ) { 
 
-                            <input 
-                                type="text" 
-                                name="HomeText" 
-                                value="<?php echo isset( $data['HomeText'] ) ? $data['HomeText'] : ''; ?>" 
-                                />
-                            
-                        </td>
-                    </tr>
-            
-                </table>
-                
-                <br />
-                
-                <?php _e( 'Shortcode' ); ?>: <strong>[ni-breadcrumbs]</strong>
-                
-                <br /><br />
+        table, table td, table tr
+        {
+            width: 100%;
+            display: block;
+        }
 
-                <input 
-                    type="submit" 
-                    class="button button-primary" 
-                    name="NI_Breadcrumbs_Submit" 
-                    value="<?php _e( 'Update Breadcrumb Options', 'ni-breadcrumbs' ); ?>"
-                    />
+    }
 
-            </form>
+</style>
 
-        </div>
+<div class="wrap">
+
+    <div id="RMVersion" <?php echo NI_Breadcrumbs_Registry::get( 'config', 'is_beta' ) ? 'class="beta"' : ''; ?>>
+        <?php _e( 'Version', 'ni-breadcrumbs' ); ?> <?php echo NI_Breadcrumbs_Registry::get( 'config', 'current_version' ); ?> 
+        <?php echo NI_Breadcrumbs_Registry::get( 'config', 'is_beta' ) ? 'Beta' : ''; ?>
+
+    </div>
+
+    <form action="" method="post">
+
+        <h2><?php _e( 'Breadcrumb Options', 'ni-breadcrumbs' ); ?></h2>
+
+        <?php if ( $status = NI_Breadcrumbs_Status::get() )
+            echo self::statusBar( $status ); ?>
+
+        <table>
+
+            <tr>
+                <td>
+
+                    <h4><?php _e( 'Breadcrumb Seperator', 'ni-breadcrumbs' ); ?></h4> 
+
+                    <h5><?php _e( 'This is the seperator between breadcrumb links', 'ni-breadcrumbs' ); ?></h5>
+
+                    <input 
+                        type="text" 
+                        name="Seperator" 
+                        value="<?php echo isset( $data['Seperator'] ) ? $data['Seperator'] : ''; ?>" 
+                        />
+
+                </td>
+                <td>
+
+                    <h4><?php _e( 'Breadcrumb Home Text', 'ni-breadcrumbs' ); ?></h4> 
+
+                    <h5><?php _e( 'This is the text that displays at the base of the breadcrumbs', 'ni-breadcrumbs' ); ?></h5>
+
+                    <input 
+                        type="text" 
+                        name="HomeText" 
+                        value="<?php echo isset( $data['HomeText'] ) ? $data['HomeText'] : ''; ?>" 
+                        />
+
+                </td>
+            </tr>
+
+        </table>
+
+        <br />
+
+        <?php _e( 'Shortcode' ); ?>: <strong>[ni-breadcrumbs]</strong>
+
+        <br /><br />
+
+        <input 
+            type="submit" 
+            class="button button-primary" 
+            name="NI_Breadcrumbs_Submit" 
+            value="<?php _e( 'Update Breadcrumb Options', 'ni-breadcrumbs' ); ?>"
+            />
+
+    </form>
+
+</div>
